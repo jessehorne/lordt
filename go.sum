@@ -1,0 +1,6 @@
+github.com/bmatcuk/doublestar/v4 v4.7.1 h1:fdDeAqgT47acgwd9bd9HxJRDmc9UAmPpc+2m0CXv75Q=
+github.com/bmatcuk/doublestar/v4 v4.7.1/go.mod h1:xBQ8jztBU6kakFMg+8WGxn0c6z1fTSPVIjEY1Wr7jzc=
+github.com/s3rj1k/go-fanotify/fanotify v0.0.0-20240229202106-bca3154da60a h1:4VFls9SuqkqeioVevnaeTXrYKQ7JiEsxqKHfxp+/ovA=
+github.com/s3rj1k/go-fanotify/fanotify v0.0.0-20240229202106-bca3154da60a/go.mod h1:2zG1g57bc+D6FpNc68gsRXJgkidteqTMhWiiUP3m8UE=
+golang.org/x/sys v0.18.0 h1:DBdB3niSjOA/O0blCZBqDefyWNYveAYMNF1Wum0DYQ4=
+golang.org/x/sys v0.18.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=

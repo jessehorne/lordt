@@ -1,0 +1,8 @@
+{
+  "patterns": [
+    "./test/**/*.txt"
+  ],
+  "options": [
+    "log", "kill"
+  ]
+}
