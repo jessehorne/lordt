@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/jessehorne/lordt/internal/cli"
 	"os"
 )
@@ -10,6 +11,6 @@ func main() {
 	cli.InitCommands(ch)
 	err := ch.Handle(os.Args)
 	if err != nil {
-		ch.RunCommand("help", []string{})
+		fmt.Println(err)
 	}
 }

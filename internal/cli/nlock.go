@@ -2,6 +2,7 @@ package cli
 
 import (
 	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"github.com/bmatcuk/doublestar/v4"
@@ -71,15 +72,15 @@ func NLockCommandHandler(ch *CommandHandler, args []string) error {
 
 	if *confPath == "" {
 		if *pattern == "" {
-			log.Fatalln("pattern option required")
+			return errors.New("pattern option required")
 		}
 		conf.Patterns = []string{*pattern}
 		conf.ShouldLog = *shouldLog
 		conf.ShouldKill = *shouldKill
 	} else {
-		c, err := loadConf(*confPath)
+		c, err := loadNLockConf(*confPath)
 		if err != nil {
-			log.Fatalln("couldn't load conf:", *confPath)
+			return errors.New(fmt.Sprintf("couldn't load conf: %s", *confPath))
 		}
 		conf = c
 	}
@@ -94,7 +95,7 @@ func NLockCommandHandler(ch *CommandHandler, args []string) error {
 			unix.O_CLOEXEC,
 	)
 	if err != nil {
-		log.Fatalf("%v\n", err)
+		return err
 	}
 
 	var allFiles []string
@@ -170,10 +171,11 @@ func NLockCommandHandler(ch *CommandHandler, args []string) error {
 		return nil
 	}
 
+loop:
 	for {
 		select {
 		case <-done:
-			return nil
+			break loop
 		default:
 			err := f(notify)
 			if err != nil {
@@ -205,7 +207,7 @@ func nlockFile(notify *fanotify.NotifyFD, path string) error {
 	)
 }
 
-func loadConf(confPath string) (*nlockConf, error) {
+func loadNLockConf(confPath string) (*nlockConf, error) {
 	data, err := os.ReadFile(confPath)
 	if err != nil {
 		return nil, err

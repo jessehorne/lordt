@@ -52,4 +52,10 @@ func InitCommands(ch *CommandHandler) {
 		Desc:    "Lock a file or files from being read as long as this is running. (experimental, slow, unreliable)",
 		Handler: NLockCommandHandler,
 	})
+
+	ch.AddCommand(&Command{
+		Name:    "honey",
+		Desc:    "Generate decoy folders/files in a specified location.",
+		Handler: HoneyCommandHandler,
+	})
 }
