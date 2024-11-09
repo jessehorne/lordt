@@ -55,12 +55,12 @@ func honeyListFileTypes() {
 }
 
 type honeyConf struct {
-	Path      string
-	Breadth   int
-	Depth     int
-	MaxSize   int      // max generated file size in KB
-	MinSize   int      // min generated file size in KB
-	Filetypes []string // list of acceptable generated file types (e.g pdf, docx, ...)
+	Path      string   `json:"path"`
+	Breadth   int      `json:"b"`
+	Depth     int      `json:"d"`
+	MaxSize   int      `json:"maxsize"`   // max generated file size in KB
+	MinSize   int      `json:"minsize"`   // min generated file size in KB
+	Filetypes []string `json:"filetypes"` // list of acceptable generated file types (e.g pdf, docx, ...)
 }
 
 func HoneyCommandHandler(ch *CommandHandler, args []string) error {
